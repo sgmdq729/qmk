@@ -20,6 +20,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #define MY_TAPPING_TERM 40
 
+static bool kc2flg = false;
+static bool kc6flg = false;
+static bool kc7flg = false;
+static bool kc8flg = false;
+static bool kc9flg = false;
+static bool kc0flg = false;
+static bool kcMINSflg = false;
+static bool kcEQLflg = false;
+static bool kcLBRCflg = false;
+static bool kcRBRCflg = false;
+static bool kcBSLSflg = false;
+static bool kcSCLNflg = false;
+static bool kcQUOTflg = false;
+static bool kcGRVflg = false;
+static long int  r_delay = 0;
+static bool lshift = false;
+static bool rshift = false;
+static bool alt = false;
+static bool isPressedFn = false;
+static bool isMac = false;
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
         KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_NUM, KC_INS, KC_PGUP, KC_PGDN,
@@ -44,27 +65,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, KC_RGUI, KC_RALT, KC_F24, KC_LEFT, KC_DOWN, KC_RGHT, KC_P0, KC_PDOT)
 };
 
-static bool kc2flg = false;
-static bool kc6flg = false;
-static bool kc7flg = false;
-static bool kc8flg = false;
-static bool kc9flg = false;
-static bool kc0flg = false;
-static bool kcMINSflg = false;
-static bool kcEQLflg = false;
-static bool kcLBRCflg = false;
-static bool kcRBRCflg = false;
-static bool kcBSLSflg = false;
-static bool kcSCLNflg = false;
-static bool kcQUOTflg = false;
-static bool kcGRVflg = false;
-static long int  r_delay = 0;
-static bool lshift = false;
-static bool rshift = false;
-static bool alt = false;
-static bool isPressedFn = false;
-static bool isMac = false;
-
 #ifdef CONSOLE_ENABLE
     void keyboard_post_init_user(void) {
     // Customise these values to desired behaviour
@@ -79,7 +79,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     #ifdef CONSOLE_ENABLE
         uprintf("KL: kc: %u¥n", keycode);
     #endif
-
 
     switch(keycode){
         case KC_F24:

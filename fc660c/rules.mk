@@ -2,6 +2,7 @@
 #EXTRALDFLAGS = -Wl,--relax
 
 I2C_DRIVER_REQUIRED = yes
+CONSOLE_ENABLE = no
 
 CUSTOM_MATRIX = yes
 SRC += matrix.c ad5258.c
